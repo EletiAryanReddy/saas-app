@@ -1,0 +1,10 @@
+import axios from "axios";
+
+const API =
+"http://localhost:5000/api/analytics";
+
+export const getAnalytics =
+(workspaceId:string)=>
+axios.get(
+`${API}/workspace/${workspaceId}`
+);
