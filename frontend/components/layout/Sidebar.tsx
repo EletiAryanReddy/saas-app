@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
 
 const menuSections = [
   {
@@ -150,9 +149,8 @@ const icons: Record<string, React.ReactNode> = {
   ),
 };
 
-export default function Sidebar() {
+export default function Sidebar({ collapsed, onToggle }: { collapsed: boolean; onToggle: () => void }) {
   const pathname = usePathname();
-  const [collapsed, setCollapsed] = useState(false);
 
   return (
     <aside
@@ -235,7 +233,7 @@ export default function Sidebar() {
       {/* Collapse Toggle */}
       <div className="shrink-0 p-3 border-t border-[var(--border)]">
         <button
-          onClick={() => setCollapsed(!collapsed)}
+          onClick={onToggle}
           className="w-full flex items-center justify-center gap-2 px-3 py-2 rounded-lg text-[var(--muted)] hover:bg-[var(--card-hover)] hover:text-[var(--text)] transition-colors"
         >
           <svg className={`w-5 h-5 transition-transform ${collapsed ? "rotate-180" : ""}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
