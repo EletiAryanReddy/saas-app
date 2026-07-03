@@ -1,9 +1,8 @@
-import OpenAI from "openai";
+import { GoogleGenerativeAI } from "@google/generative-ai";
 
-const openai = new OpenAI({
-  apiKey: process.env.OPENROUTER_API_KEY,
-  baseURL: "https://openrouter.ai/api/v1",
-});
+const genAI = new GoogleGenerativeAI(
+  process.env.GEMINI_API_KEY!
+);
 
 export const generateAIResponse = async (
   prompt: string,
@@ -11,24 +10,16 @@ export const generateAIResponse = async (
   userId?: string
 ) => {
   try {
-    const completion =
-      await openai.chat.completions.create({
-        model: "deepseek/deepseek-chat-v3-0324",
-        messages: [
-          {
-            role: "user",
-            content: prompt,
-          },
-        ],
-      });
-   
-    return (
-      completion.choices[0]?.message?.content ||
-      "No response generated"
-    );
+    const model = genAI.getGenerativeModel({
+      model: "gemini-1.5-flash",
+    });
+
+    const result = await model.generateContent(prompt);
+
+    return result.response.text();
   } catch (error) {
     console.error(error);
-    throw new Error("OpenRouter AI Error");
+    throw new Error("Gemini AI Error");
   }
 };
 
