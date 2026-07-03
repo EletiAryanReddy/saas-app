@@ -27,3 +27,8 @@ Thumbs.db
 # IDE
 .vscode/
 .idea/
+
+backend/firebase-admin.json
+frontend/.env.local
+frontend/.next/
+frontend/node_modules/
