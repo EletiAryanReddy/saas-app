@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import PhoneLogin from "@/components/auth/PhoneLogin";
+import PhoneLogin from "@/components/auth/PhoneLoginForm";
 import OTPVerification from "@/components/auth/OTPVerification";
 
 export default function OTPPage() {
