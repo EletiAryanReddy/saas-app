@@ -6,6 +6,11 @@ import { useEffect, useState } from "react";
 import WhiteboardList
 from "@/components/whiteboard/WhiteboardList";
 
+import PageHeader from "@/components/ui/PageHeader";
+import GlassCard from "@/components/ui/GlassCard";
+import GradientButton from "@/components/ui/GradientButton";
+
+
 import {
 getWorkspaceBoards,
 createBoard,

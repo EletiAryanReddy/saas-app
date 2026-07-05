@@ -1,6 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import PageHeader from "@/components/ui/PageHeader";
+import MetricCard from "@/components/ui/MetricCard";
+import LineChart from "@/components/ui/LineChart";
+import AreaChart from "@/components/ui/AreaChart";
+import DoughnutChart from "@/components/ui/DoughnutChart";
 
 const API = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api";
 

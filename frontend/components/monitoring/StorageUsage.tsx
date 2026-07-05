@@ -17,7 +17,7 @@ return(
 
    <h1>
     {
-      health.storageUsage || 0
+      health?.storageUsage || 0
     } MB
    </h1>
 

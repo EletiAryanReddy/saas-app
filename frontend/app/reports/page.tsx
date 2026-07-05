@@ -2,6 +2,11 @@
 
 import { useEffect, useState } from "react";
 
+import PageHeader from "@/components/ui/PageHeader";
+import DataTable from "@/components/ui/DataTable";
+import GradientButton from "@/components/ui/GradientButton";
+import BarChart from "@/components/ui/BarChart";
+
 const API =
   process.env.NEXT_PUBLIC_API_URL ||
   "http://localhost:5000/api";

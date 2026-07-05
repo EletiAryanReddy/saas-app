@@ -17,7 +17,7 @@ return(
 
    <h1>
     {
-      health.activeUsers || 0
+      health?.activeUsers || 0
     }
    </h1>
 
