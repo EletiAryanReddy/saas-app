@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import PhoneLogin from "@/components/auth/PhoneLoginForm";
+import PhoneLoginForm from "@/components/auth/PhoneLoginForm";
 import OTPVerification from "@/components/auth/OTPVerification";
 
 export default function OTPPage() {
@@ -11,7 +11,7 @@ export default function OTPPage() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       {!phone ? (
-        <PhoneLogin onSent={setPhone} />
+        <PhoneLoginForm onSent={setPhone} />
       ) : (
         <OTPVerification phone={phone} />
       )}
