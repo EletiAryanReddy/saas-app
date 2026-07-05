@@ -1,5 +1,6 @@
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+import User from "../user/user.model";
 
 const JWT_SECRET = process.env.JWT_SECRET || "secret";
 const REFRESH_SECRET = process.env.REFRESH_SECRET || "refresh_secret";
