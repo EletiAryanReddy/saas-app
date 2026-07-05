@@ -31,7 +31,7 @@ async(req:Request,res:Response)=>{
 
 const activities =
 await getWorkspaceActivities(
-req.params.workspaceId
+String(req.params.workspaceId)
 );
 
 res.json(
@@ -45,7 +45,7 @@ async(req:Request,res:Response)=>{
 
 const activities =
 await getUserActivities(
-req.params.userId
+String(req.params.userId)
 );
 
 res.json(
@@ -58,7 +58,7 @@ export const deleteActivityController =
 async(req:Request,res:Response)=>{
 
 await deleteActivity(
-req.params.activityId
+String(req.params.activityId)
 );
 
 res.json({
@@ -72,11 +72,12 @@ async(req:Request,res:Response)=>{
 
 const stats =
 await getActivityStats(
-req.params.workspaceId
+String(req.params.workspaceId)
 );
 
 res.json(stats);
 
 };
+
 
 

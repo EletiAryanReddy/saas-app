@@ -1,5 +1,4 @@
 import { Request, Response } from "express";
-
 import {
   createTask,
   getTasksByWorkspace,
@@ -7,44 +6,33 @@ import {
   deleteTask,
 } from "./task.service";
 
-export const createTaskController =
-  async (req: Request, res: Response) => {
-    const task = await createTask(
-      req.body
-    );
+const param = (value: any): string => {
+  return Array.isArray(value) ? value[0] : value || "";
+};
 
-    res.json(task);
-  };
+export const createTaskController = async (req: Request, res: Response) => {
+  const task = await createTask(req.body);
+  res.json(task);
+};
 
-export const getTasksController =
-  async (req: Request, res: Response) => {
-    const tasks =
-      await getTasksByWorkspace(
-        req.params.workspaceId
-      );
+export const getTasksController = async (req: Request, res: Response) => {
+  const tasks = await getTasksByWorkspace(param(String(req.params.workspaceId)));
+  res.json(tasks);
+};
 
-    res.json(tasks);
-  };
+export const updateTaskStatusController = async (req: Request, res: Response) => {
+  const task = await updateTaskStatus(
+    param(String(req.params.taskId)),
+    req.body.status
+  );
+  res.json(task);
+};
 
-export const updateTaskStatusController =
-  async (req: Request, res: Response) => {
-    const task =
-      await updateTaskStatus(
-        req.params.taskId,
-        req.body.status
-      );
+export const deleteTaskController = async (req: Request, res: Response) => {
+  await deleteTask(param(String(req.params.taskId)));
 
-    res.json(task);
-  };
-
-export const deleteTaskController =
-  async (req: Request, res: Response) => {
-    await deleteTask(
-      req.params.taskId
-    );
-
-    res.json({
-      success: true,
-      message: "Task Deleted",
-    });
-  };
+  res.json({
+    success: true,
+    message: "Task Deleted",
+  });
+};

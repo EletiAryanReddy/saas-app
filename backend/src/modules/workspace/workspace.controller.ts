@@ -6,48 +6,30 @@ import {
   addMember,
 } from "./workspace.service";
 
-export const createWorkspaceController = async (
-  req: Request,
-  res: Response
-) => {
+const param = (value: any): string => {
+  return Array.isArray(value) ? value[0] : value || "";
+};
+
+export const createWorkspaceController = async (req: Request, res: Response) => {
   const { name, description, ownerId } = req.body;
-
-  const workspace = await createWorkspace(
-    name,
-    description,
-    ownerId
-  );
-
+  const workspace = await createWorkspace(name, description, ownerId);
   res.json(workspace);
 };
 
-export const getWorkspacesController = async (
-  req: Request,
-  res: Response
-) => {
+export const getWorkspacesController = async (req: Request, res: Response) => {
   const workspaces = await getAllWorkspaces();
-
   res.json(workspaces);
 };
 
-export const getWorkspaceController = async (
-  req: Request,
-  res: Response
-) => {
-  const workspace = await getWorkspaceById(
-    req.params.id
-  );
-
+export const getWorkspaceController = async (req: Request, res: Response) => {
+  const workspace = await getWorkspaceById(param(String(req.params.id)));
   res.json(workspace);
 };
 
-export const addMemberController = async (
-  req: Request,
-  res: Response
-) => {
+export const addMemberController = async (req: Request, res: Response) => {
   const workspace = await addMember(
-    req.body.workspaceId,
-    req.body.userId
+    String(req.body.workspaceId || ""),
+    String(req.body.userId || "")
   );
 
   res.json(workspace);

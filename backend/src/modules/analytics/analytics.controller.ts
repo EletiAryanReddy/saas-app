@@ -10,7 +10,7 @@ async (req, res) => {
 
     const data =
       await getWorkspaceAnalytics(
-        req.params.workspaceId
+        String(req.params.workspaceId)
       );
 
     res.json(data);
@@ -34,7 +34,7 @@ async (req, res) => {
 
     const data =
       await getTaskAnalytics(
-        req.params.workspaceId
+        String(req.params.workspaceId)
       );
 
     res.json(data);

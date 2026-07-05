@@ -52,7 +52,7 @@ export const getReportsController = async (
 
     const reports =
       await getWorkspaceReports(
-        req.params.workspaceId
+        String(req.params.workspaceId)
       );
 
     res.json(reports);
@@ -74,7 +74,7 @@ export const getReportController = async (
 
   const report =
     await getReportById(
-      req.params.reportId
+      String(req.params.reportId)
     );
 
   res.json(report);
@@ -88,7 +88,7 @@ export const updateReportController = async (
 
   const report =
     await updateReport(
-      req.params.reportId,
+      String(req.params.reportId),
       req.body
     );
 
@@ -105,7 +105,7 @@ export const deleteReportController = async (
 ) => {
 
   await deleteReport(
-    req.params.reportId
+    String(req.params.reportId)
   );
 
   res.json({

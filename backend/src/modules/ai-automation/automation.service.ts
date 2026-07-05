@@ -114,20 +114,13 @@ case "CREATE_EVENT":
 
   await Calendar.create({
 
-    workspaceId:
-    automation.workspaceId,
+    workspaceId: String(automation.workspaceId),
 
     title:
     "Automated Event",
 
     description:
     automation.name,
-
-    startDate:
-    new Date(),
-
-    endDate:
-    new Date()
 
   });
 

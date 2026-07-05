@@ -51,7 +51,7 @@ async(req:Request,res:Response)=>{
 
  const invitations =
  await getWorkspaceInvitations(
-  req.params.workspaceId
+  String(req.params.workspaceId)
  );
 
  res.json(invitations);
@@ -63,7 +63,7 @@ async(req:Request,res:Response)=>{
 
  const invitation =
  await acceptInvitation(
-  req.params.inviteId
+  String(req.params.inviteId)
  );
 
  res.json({
@@ -78,7 +78,7 @@ async(req:Request,res:Response)=>{
 
  const invitation =
  await rejectInvitation(
-  req.params.inviteId
+  String(req.params.inviteId)
  );
 
  res.json({
@@ -92,7 +92,7 @@ export const deleteInvitationController =
 async(req:Request,res:Response)=>{
 
  await deleteInvitation(
-  req.params.inviteId
+  String(req.params.inviteId)
  );
 
  res.json({

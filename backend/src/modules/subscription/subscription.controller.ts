@@ -54,7 +54,7 @@ res:Response
 
  const data =
  await getWorkspaceSubscription(
- req.params.workspaceId
+ String(req.params.workspaceId)
  );
 
  res.json(data);
@@ -69,7 +69,7 @@ res:Response
 
  const data =
  await updateSubscription(
- req.params.id,
+ String(req.params.id),
  req.body
  );
 
@@ -87,7 +87,7 @@ res:Response
 )=>{
 
  await deleteSubscription(
- req.params.id
+ String(req.params.id)
  );
 
  res.json({

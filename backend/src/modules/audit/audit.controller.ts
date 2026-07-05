@@ -41,7 +41,7 @@ async (
 
   const logs =
     await getWorkspaceAuditLogs(
-      req.params.workspaceId
+      String(req.params.workspaceId)
     );
 
   res.json(logs);
@@ -55,7 +55,7 @@ async (
 
   const logs =
     await getUserAuditLogs(
-      req.params.userId
+      String(req.params.userId)
     );
 
   res.json(logs);
@@ -68,7 +68,7 @@ async (
 ) => {
 
   await deleteAuditLog(
-    req.params.auditId
+    String(req.params.auditId)
   );
 
   res.json({

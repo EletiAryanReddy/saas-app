@@ -11,6 +11,7 @@ import {
   uploadToCloudinary,
 } from "../../services/cloudinary/upload.service";
 
+
 export const uploadFileController =
 async (
   req: Request,
@@ -27,10 +28,12 @@ async (
       userId,
     } = req.body;
 
-    const result =
-      await uploadToCloudinary(
-        file!.buffer
-      );
+    
+    
+    const result: any = await uploadToCloudinary(
+  req.file.buffer,
+  req.file.originalname
+);
 
     const saved =
       await createFile({
@@ -67,7 +70,7 @@ async (
 
   const files =
     await getWorkspaceFiles(
-      req.params.workspaceId
+      String(req.params.workspaceId)
     );
 
   res.json(files);
@@ -80,7 +83,7 @@ async (
 ) => {
 
   await deleteFile(
-    req.params.id
+    String(req.params.id)
   );
 
   res.json({

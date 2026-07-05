@@ -41,7 +41,7 @@ async(req:Request,res:Response)=>{
 
 const automations =
 await getWorkspaceAutomations(
-req.params.workspaceId
+String(req.params.workspaceId)
 );
 
 res.json(automations);
@@ -53,7 +53,7 @@ async(req:Request,res:Response)=>{
 
 const automation =
 await getAutomationById(
-req.params.automationId
+String(req.params.automationId)
 );
 
 res.json(automation);
@@ -65,7 +65,7 @@ async(req:Request,res:Response)=>{
 
 const automation =
 await updateAutomation(
-req.params.automationId,
+String(req.params.automationId),
 req.body
 );
 
@@ -80,7 +80,7 @@ export const deleteAutomationController =
 async(req:Request,res:Response)=>{
 
 await deleteAutomation(
-req.params.automationId
+String(req.params.automationId)
 );
 
 res.json({
@@ -94,7 +94,7 @@ async(req:Request,res:Response)=>{
 
 const result =
 await runAutomation(
-req.params.automationId
+String(req.params.automationId)
 );
 
 res.json(result);
@@ -106,10 +106,11 @@ async(req:Request,res:Response)=>{
 
 const logs =
 await getAutomationLogs(
-req.params.automationId
+String(req.params.automationId)
 );
 
 res.json(logs);
 
 };
+
 

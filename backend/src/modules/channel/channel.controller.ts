@@ -30,7 +30,7 @@ async(req,res)=>{
 
  const channels =
  await getWorkspaceChannels(
-  req.params.workspaceId
+  String(req.params.workspaceId)
  );
 
  res.json(channels);
@@ -42,7 +42,7 @@ async(req,res)=>{
 
  const channel =
  await getChannelById(
-  req.params.channelId
+  String(req.params.channelId)
  );
 
  res.json(channel);
@@ -54,7 +54,7 @@ async(req,res)=>{
 
  const channel =
  await sendMessage(
-  req.params.channelId,
+  String(req.params.channelId),
   req.body
  );
 
@@ -69,7 +69,7 @@ export const deleteChannelController =
 async(req,res)=>{
 
  await deleteChannel(
-  req.params.channelId
+  String(req.params.channelId)
  );
 
  res.json({

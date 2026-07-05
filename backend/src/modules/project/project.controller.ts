@@ -30,7 +30,7 @@ async(req:Request,res:Response)=>{
 
  const projects =
  await getWorkspaceProjects(
-  req.params.workspaceId
+  String(req.params.workspaceId)
  );
 
  res.json(projects);
@@ -42,7 +42,7 @@ async(req:Request,res:Response)=>{
 
  const project =
  await getProjectById(
-  req.params.projectId
+  String(req.params.projectId)
  );
 
  res.json(project);
@@ -54,7 +54,7 @@ async(req:Request,res:Response)=>{
 
  const project =
  await updateProject(
-  req.params.projectId,
+  String(req.params.projectId),
   req.body
  );
 
@@ -69,7 +69,7 @@ export const deleteProjectController =
 async(req:Request,res:Response)=>{
 
  await deleteProject(
-  req.params.projectId
+  String(req.params.projectId)
  );
 
  res.json({

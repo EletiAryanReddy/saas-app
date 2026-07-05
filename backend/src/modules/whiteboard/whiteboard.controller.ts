@@ -56,7 +56,7 @@ try {
 
 const boards =
 await getWorkspaceWhiteboards(
-  req.params.workspaceId
+  String(req.params.workspaceId)
 );
 
 res.json(boards);
@@ -83,7 +83,7 @@ try {
 
 const board =
 await getWhiteboardById(
-  req.params.boardId
+  String(req.params.boardId)
 );
 
 if(!board){
@@ -120,7 +120,7 @@ try {
 
 const board =
 await updateWhiteboard(
-  req.params.boardId,
+  String(req.params.boardId),
   req.body
 );
 
@@ -161,7 +161,7 @@ try {
 
 const board =
 await addElement(
-  req.params.boardId,
+  String(req.params.boardId),
   req.body
 );
 
@@ -193,7 +193,7 @@ try {
 
 const board =
 await clearWhiteboard(
-  req.params.boardId
+  String(req.params.boardId)
 );
 
 res.json({
@@ -222,7 +222,7 @@ try {
 
 const board =
 await duplicateWhiteboard(
-  req.params.boardId
+  String(req.params.boardId)
 );
 
 res.json({
@@ -252,7 +252,7 @@ try {
 
 const boards =
 await searchWhiteboards(
-  req.params.workspaceId,
+  String(req.params.workspaceId),
   req.query.keyword as string
 );
 
@@ -279,7 +279,7 @@ try {
 
 const stats =
 await getWhiteboardStats(
-  req.params.workspaceId
+  String(req.params.workspaceId)
 );
 
 res.json(stats);
@@ -306,7 +306,7 @@ try {
 
 const board =
 await deleteWhiteboard(
-  req.params.boardId
+  String(req.params.boardId)
 );
 
 if(!board){
@@ -336,3 +336,4 @@ res.status(500).json({
 }
 
 };
+

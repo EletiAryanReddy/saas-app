@@ -1,8 +1,7 @@
 import { Server } from "socket.io";
 import Message from "../../modules/chat/message.model";
 
-let io: Server;
-
+export let io: Server;
 const onlineUsers = new Map<string, string>();
 const meetingRooms = new Map<string, string[]>();
 

@@ -43,7 +43,7 @@ async(
 
  const comments =
  await getComments(
-  req.params.entityId
+  String(req.params.entityId)
  );
 
  res.json(comments);
@@ -58,7 +58,7 @@ async (req, res) => {
 
     const updated =
       await updateComment(
-        req.params.id,
+        String(req.params.id),
         req.body.comment
       );
 
@@ -92,7 +92,7 @@ async(
 )=>{
 
  await deleteComment(
-  req.params.id
+  String(req.params.id)
  );
 
  res.json({

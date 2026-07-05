@@ -67,7 +67,7 @@ try {
 
 const events =
 await getWorkspaceEvents(
-  req.params.workspaceId
+  String(req.params.workspaceId)
 );
 
 res.json(events);
@@ -95,7 +95,7 @@ try {
 
 const event =
 await getEventById(
-  req.params.eventId
+  String(req.params.eventId)
 );
 
 if(!event){
@@ -133,7 +133,7 @@ try {
 
 const event =
 await updateEvent(
-  req.params.eventId,
+  String(req.params.eventId),
   req.body
 );
 
@@ -162,7 +162,7 @@ res:Response
 try {
 
 await deleteEvent(
-  req.params.eventId
+  String(req.params.eventId)
 );
 
 res.json({
@@ -222,7 +222,7 @@ try {
 
 const events =
 await getTodayEvents(
-  req.params.workspaceId
+  String(req.params.workspaceId)
 );
 
 res.json(events);
@@ -248,7 +248,7 @@ try {
 
 const events =
 await getUpcomingEvents(
-  req.params.workspaceId
+  String(req.params.workspaceId)
 );
 
 res.json(events);
@@ -273,7 +273,7 @@ try {
 
 const stats =
 await getCalendarStats(
-  req.params.workspaceId
+  String(req.params.workspaceId)
 );
 
 res.json(stats);
@@ -299,7 +299,7 @@ try {
 const event =
 await addParticipant(
 
-  req.params.eventId,
+  String(req.params.eventId),
 
   req.body.userId
 
@@ -331,7 +331,7 @@ try {
 const event =
 await removeParticipant(
 
-  req.params.eventId,
+  String(req.params.eventId),
 
   req.body.userId
 
@@ -362,7 +362,7 @@ try {
 const events =
 await searchEvents(
 
-  req.params.workspaceId,
+  String(req.params.workspaceId),
 
   req.query.keyword as string
 
@@ -382,3 +382,4 @@ res.status(500).json({
 }
 
 };
+

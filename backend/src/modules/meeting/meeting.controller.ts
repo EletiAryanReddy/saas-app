@@ -25,7 +25,7 @@ export const getWorkspaceMeetings =
     const meetings =
       await Meeting.find({
         workspaceId:
-          req.params.workspaceId,
+          String(req.params.workspaceId),
       });
 
     res.json(meetings);
@@ -38,7 +38,7 @@ export const getMeetingById =
   ) => {
     const meeting =
       await Meeting.findById(
-        req.params.meetingId
+        String(req.params.meetingId)
       );
 
     res.json(meeting);

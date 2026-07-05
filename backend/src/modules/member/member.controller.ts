@@ -19,7 +19,7 @@ async (req: any, res: any) => {
 
   const members =
     await getWorkspaceMembers(
-      req.params.workspaceId
+      String(req.params.workspaceId)
     );
 
   res.json(members);
@@ -30,7 +30,7 @@ async (req: any, res: any) => {
 
   const member =
     await updateMemberRole(
-      req.params.memberId,
+      String(req.params.memberId),
       req.body.role
     );
 
@@ -41,7 +41,7 @@ export const deleteMemberController =
 async (req: any, res: any) => {
 
   await deleteMember(
-    req.params.memberId
+    String(req.params.memberId)
   );
 
   res.json({

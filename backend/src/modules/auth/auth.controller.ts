@@ -1,4 +1,6 @@
 import { Request, Response } from "express";
+import User from "../user/user.model";
+
 
 import {
   registerUser,

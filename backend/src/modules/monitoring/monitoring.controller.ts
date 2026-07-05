@@ -54,7 +54,7 @@ try {
 
 const monitoring =
 await getWorkspaceMonitoring(
-  req.params.workspaceId
+  String(req.params.workspaceId)
 );
 
 res.json(monitoring);
@@ -81,7 +81,7 @@ try {
 
 const monitoring =
 await getMonitoringById(
-  req.params.monitoringId
+  String(req.params.monitoringId)
 );
 
 if (!monitoring) {
@@ -119,7 +119,7 @@ try {
 
 const monitoring =
 await updateMonitoring(
-  req.params.monitoringId,
+  String(req.params.monitoringId),
   req.body
 );
 
@@ -160,7 +160,7 @@ try {
 
 const monitoring =
 await deleteMonitoring(
-  req.params.monitoringId
+  String(req.params.monitoringId)
 );
 
 if (!monitoring) {
@@ -201,7 +201,7 @@ try {
 
 const health =
 await getLatestHealth(
-  req.params.workspaceId
+  String(req.params.workspaceId)
 );
 
 res.json(health);
@@ -228,7 +228,7 @@ try {
 
 const usage =
 await getApiUsage(
-  req.params.workspaceId
+  String(req.params.workspaceId)
 );
 
 res.json(usage);
@@ -255,7 +255,7 @@ try {
 
 const logs =
 await getErrorLogs(
-  req.params.workspaceId
+  String(req.params.workspaceId)
 );
 
 res.json(logs);
@@ -279,7 +279,7 @@ res: Response
 try {
 const stats =
 await getMonitoringStats(
-  req.params.workspaceId
+  String(req.params.workspaceId)
 );
 
 res.json(stats);
@@ -297,3 +297,4 @@ res.status(500).json({
 }
 
 };
+

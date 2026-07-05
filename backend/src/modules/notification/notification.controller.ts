@@ -45,7 +45,7 @@ async (
 
   const notifications =
     await getUserNotifications(
-      req.params.userId
+      String(req.params.userId)
     );
 
   res.json(notifications);
@@ -59,7 +59,7 @@ async (
 
   const notification =
     await markAsRead(
-      req.params.id
+      String(req.params.id)
     );
 
   res.json({
@@ -76,7 +76,7 @@ async (
 ) => {
 
   await deleteNotification(
-    req.params.id
+    String(req.params.id)
   );
 
   res.json({

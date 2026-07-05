@@ -45,7 +45,7 @@ async (
 
   const settings =
     await getSettings(
-      req.params.workspaceId
+      String(req.params.workspaceId)
     );
 
   res.json(settings);
@@ -60,7 +60,7 @@ async (
 
   const settings =
     await updateSettings(
-      req.params.settingsId,
+      String(req.params.settingsId),
       req.body
     );
 
@@ -78,7 +78,7 @@ async (
 ) => {
 
   await deleteSettings(
-    req.params.settingsId
+    String(req.params.settingsId)
   );
 
   res.json({

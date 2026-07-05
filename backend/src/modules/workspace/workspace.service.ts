@@ -5,12 +5,12 @@ export const createWorkspace = async (
   description: string,
   ownerId: string
 ) => {
+
   const workspace = await Workspace.create({
-    name,
-    description,
-    owner: ownerId,
-    members: [ownerId],
-  });
+  name,
+  owner: ownerId,
+  members: [ownerId],
+});
 
   return workspace;
 };

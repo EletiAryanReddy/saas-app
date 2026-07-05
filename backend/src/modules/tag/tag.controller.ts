@@ -38,7 +38,7 @@ async(req:Request,res:Response)=>{
 
  const tags =
  await getWorkspaceTags(
-  req.params.workspaceId
+  String(req.params.workspaceId)
  );
 
  res.json(tags);
@@ -50,7 +50,7 @@ async(req:Request,res:Response)=>{
 
  const tag =
  await getTagById(
-  req.params.tagId
+  String(req.params.tagId)
  );
 
  res.json(tag);
@@ -62,7 +62,7 @@ async(req:Request,res:Response)=>{
 
  const tag =
  await updateTag(
-  req.params.tagId,
+  String(req.params.tagId),
   req.body
  );
 
@@ -77,7 +77,7 @@ export const deleteTagController =
 async(req:Request,res:Response)=>{
 
  await deleteTag(
-  req.params.tagId
+  String(req.params.tagId)
  );
 
  res.json({

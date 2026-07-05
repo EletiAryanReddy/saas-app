@@ -26,7 +26,7 @@ export const getBoardsController =
   ) => {
     const boards =
       await getBoardsByWorkspace(
-        req.params.workspaceId
+        String(req.params.workspaceId)
       );
 
     res.json(boards);
@@ -40,7 +40,7 @@ export const createCardController = async (
     console.log("BODY:", req.body);
 
     const board = await createCard(
-      req.params.boardId,
+      String(req.params.boardId),
       req.body.columnTitle,
       req.body.card
     );
@@ -62,7 +62,7 @@ export const moveCardController =
   ) => {
     const board =
       await moveCard(
-        req.params.boardId,
+        String(req.params.boardId),
         req.body.cardId,
         req.body.sourceColumn,
         req.body.targetColumn
@@ -78,8 +78,8 @@ export const deleteCardController =
   ) => {
     const board =
       await deleteCard(
-        req.params.boardId,
-        req.params.cardId
+        String(req.params.boardId),
+        String(req.params.cardId)
       );
 
     res.json(board);

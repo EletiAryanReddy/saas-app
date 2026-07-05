@@ -30,7 +30,7 @@ async (req: any, res: any) => {
 
   const messages =
     await getMessages(
-      req.params.workspaceId
+      String(req.params.workspaceId)
     );
 
   res.json(messages);
